@@ -1,0 +1,16 @@
+version: '3'
+services:
+  influxdb:
+    container_name: influxdb
+    image: "{{ influxdb_image }}:{{ influxdb_version }}"
+    restart: always
+    environment:
+      INFLUXDB_DB: "{{ influxdb_database }}"
+      INFLUXDB_ADMIN_USER: "{{ influxdb_admin_user }}"
+      INFLUXDB_ADMIN_PASSWORD: "{{ influxdb_admin_password }}"
+    ports:
+      - "{{ influxdb_host_port }}:{{ influxdb_container_port }}"
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+volumes:
+  influxdb_data:

@@ -1,0 +1,30 @@
+---
+- name: Ensure docker is installed
+  become: yes
+  ansible.builtin.package:
+    name: docker
+    state: present
+
+- name: Ensure docker-compose is installed
+  become: yes
+  ansible.builtin.package:
+    name: docker-compose
+    state: present
+
+- name: Create directory for docker compose file
+  become: yes
+  ansible.builtin.file:
+    path: "/docker/telegraf"
+    state: directory
+
+- name: Copy docker compose file
+  become: yes
+  ansible.builtin.template:
+    src: docker-compose.yml.j2
+    dest: "/docker/telegraf/docker-compose.yml.j2"
+
+- name: Run docker compose
+  become: yes
+  ansible.builtin.command:
+    cmd: docker compose up -d
+    chdir: /docker/telegraf

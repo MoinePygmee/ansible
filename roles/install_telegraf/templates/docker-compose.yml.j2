@@ -1,0 +1,13 @@
+version: '3'
+services:
+  telegraf:
+    image: "{{ telegraf_image }}:{{ telegraf_version }}"
+    container_name : telegraf
+    restart: always
+    environment:
+      INFLUXDB_URL: "{{ influxdb_url }}"
+      INFLUXDB_DATABASE: "{{ influxdb_database }}"
+      INFLUXDB_USERNAME: "{{ influxdb_username }}"
+      INFLUXDB_PASSWORD: "{{ influxdb_password }}"
+    ports:
+      - "{{ telegraf_host_port }}:{{ telegraf_container_port }}"

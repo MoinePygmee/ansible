@@ -1,0 +1,5 @@
+---
+- name: restart grafana
+  docker_compose:
+    project_src: /docker/grafana
+    restarted: yes

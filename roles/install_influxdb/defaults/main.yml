@@ -1,0 +1,7 @@
+influxdb_image: influxdb
+influxdb_version: latest
+influxdb_host_port: 8086
+influxdb_container_port: 8086
+influxdb_database : influx
+influxdb_username : admin
+influxdb_password : admin

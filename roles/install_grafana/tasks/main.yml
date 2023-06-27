@@ -1,0 +1,24 @@
+  ---
+- name: Ensure docker is installed
+  become: yes
+  ansible.builtin.package:
+    name: docker
+    state: present
+
+- name: Create directory for docker compose file
+  become: yes
+  ansible.builtin.file:
+    path: "/docker/grafana"
+    state: directory
+
+- name: Copy docker compose file
+  become: yes
+  ansible.builtin.template:
+    src: docker-compose.yml
+    dest: "/docker/grafana/docker-compose.yml.j2"
+
+- name: Run docker compose
+  become: yes
+  ansible.builtin.command:
+    cmd: docker compose up -d
+    chdir: /docker/grafana

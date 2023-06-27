@@ -1,0 +1,8 @@
+telegraf_image: telegraf
+telegraf_version: latest
+telegraf_host_port: 8125
+telegraf_container_port: 8125
+influxdb_url: http://influxdb:8086
+influxdb_database: telegraf
+influxdb_username: admin
+influxdb_password: admin

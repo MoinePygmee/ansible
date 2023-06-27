@@ -1,0 +1,5 @@
+---
+- name: restart telegraf
+  docker_compose:
+    project_src: /docker/telegraf
+    restarted: yes
